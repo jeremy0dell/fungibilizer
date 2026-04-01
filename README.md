@@ -1,12 +1,24 @@
-# The Fungibilizer
+<p align="center">
+  <img src="brand/icon-primary-512.png" alt="Fungibilizer" width="160" height="160">
+</p>
 
-**A Protocol for Transmuting Non-Fungible Tokens into Fungible Units and Back Again**
+<h1 align="center">The Fungibilizer</h1>
 
-> *"To fung, or not to fung — that is the question."*
+<p align="center">
+  <strong>A Protocol for Transmuting Non-Fungible Tokens into Fungible Units and Back Again</strong>
+</p>
+
+<p align="center">
+  <a href="docs/whitepaper.md"><strong>Read the Whitepaper &rarr;</strong></a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://website-topaz-psi-78.vercel.app">Website</a>
+</p>
+
+<p align="center">
+  <em>"To fung, or not to fung — that is the question."</em>
+</p>
 
 ---
 
-Three contracts. Two operations. One invariant: **S = α &middot; n**. Zero oracles. Zero governance.
+Three contracts. Two operations. One invariant: **S = &alpha; &middot; n**. Zero oracles. Zero governance.
 
 The Fungibilizer converts NFTs into fungible ERC-20 pool tokens through a scarce, consumable catalyst mechanism. Funging burns a Fungibilizer token, vaults the target NFT, and mints pool tokens. Defunging burns pool tokens and returns a random NFT from the vault.
 
