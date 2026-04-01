@@ -1,0 +1,21 @@
+{
+  "name": "fungibilizer",
+  "version": "1.0.0",
+  "description": "A protocol for transmuting non-fungible tokens into fungible units and back again",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:local": "hardhat run scripts/deploy.js",
+    "example:funge": "hardhat run examples/funge.js",
+    "example:defunge": "hardhat run examples/defunge.js",
+    "node": "hardhat node"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.1.0"
+  },
+  "license": "MIT"
+}

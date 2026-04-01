@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Fungibilizer — Transmute NFTs into Fungible Units</title>
+  <meta name="description" content="A protocol for converting non-fungible tokens into fungible pool tokens and back again. No oracle. No governance. No off-chain components.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-badge">PROTOCOL</div>
+      <h1>The Fungibilizer</h1>
+      <p class="hero-sub">A Protocol for Transmuting Non-Fungible Tokens<br>into Fungible Units and Back Again</p>
+      <p class="hero-quote">"To fung, or not to fung — that is the question."</p>
+      <div class="hero-actions">
+        <a href="#how-it-works" class="btn btn-primary">How It Works</a>
+        <a href="https://github.com" class="btn btn-secondary">Read the Whitepaper</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value">3</span>
+          <span class="stat-label">Contracts</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">2</span>
+          <span class="stat-label">Operations</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">1</span>
+          <span class="stat-label">Invariant</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">0</span>
+          <span class="stat-label">Oracles</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Problem -->
+  <section class="section" id="problem">
+    <div class="container">
+      <h2>The Problem</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>Illiquid by Design</h3>
+          <p>NFTs can't be partially sold, efficiently collateralized, or composed with DeFi protocols that require fungible units.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚖️</div>
+          <h3>Economically Fungible</h3>
+          <p>Floor-price trading already treats many NFTs as interchangeable. The tokens are economically fungible but technically non-fungible.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧩</div>
+          <h3>DeFi Incompatible</h3>
+          <p>Liquidity pools, lending markets, and yield strategies all require interchangeable units. ERC-721 doesn't fit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section section-dark" id="how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      <p class="section-sub">Two operations. One invariant. Zero governance.</p>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-number">1</div>
+          <h3>Funge</h3>
+          <p>Burn a scarce Fungibilizer token + vault your NFT → receive fungible pool tokens</p>
+          <div class="flow-detail">
+            <code>Engine.funge(fungibilizerId, collection, nftId)</code>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-number">2</div>
+          <h3>Trade</h3>
+          <p>Pool tokens are standard ERC-20 — trade on Uniswap, use as collateral on Aave, LP on Curve</p>
+          <div class="flow-detail">
+            <code>fBAYC / ETH on any DEX</code>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-number">3</div>
+          <h3>Defunge</h3>
+          <p>Burn pool tokens → receive a random NFT from the vault. No Fungibilizer required.</p>
+          <div class="flow-detail">
+            <code>Engine.defunge(collection)</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="invariant">
+        <div class="invariant-label">Conservation Invariant</div>
+        <div class="invariant-formula">S = α · n</div>
+        <div class="invariant-desc">Pool token supply always equals alpha times the number of vaulted NFTs. Always.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Key Insight -->
+  <section class="section" id="insight">
+    <div class="container">
+      <h2>The Key Insight</h2>
+      <div class="insight-grid">
+        <div class="insight-main">
+          <p class="insight-text">The ability to fung is itself an asset — <strong>scarce, transferable, and consumed on use</strong>.</p>
+          <p>The Fungibilizer token is an ERC-721. It grants its holder the right to fung exactly one NFT. Upon use, it is permanently burned. One Fungibilizer, one funging, then it ceases to exist.</p>
+          <p>This creates a <strong>two-market structure</strong>: a market for the act of transformation (Fungibilizer tokens) alongside a market for the transformation's output (pool tokens).</p>
+          <p class="insight-highlight">The market prices the act itself.</p>
+        </div>
+        <div class="insight-side">
+          <div class="asset-card">
+            <h4>Fungibilizer</h4>
+            <span class="tag">ERC-721</span>
+            <p>Scarce catalyst. Burned on use. Value = demand for funging.</p>
+          </div>
+          <div class="asset-card">
+            <h4>Pool Token</h4>
+            <span class="tag">ERC-20</span>
+            <p>Fungible exposure. Backed by vault. Value ≈ collection floor.</p>
+          </div>
+          <div class="asset-card">
+            <h4>Vaulted NFT</h4>
+            <span class="tag">ERC-721</span>
+            <p>Underlying collateral. Locked until defunged.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="section section-dark" id="architecture">
+    <div class="container">
+      <h2>Contract Architecture</h2>
+      <div class="arch">
+        <div class="arch-box arch-fungibilizer">
+          <h4>Fungibilizer</h4>
+          <span class="arch-std">ERC-721</span>
+          <p>Scarce, consumable catalyst token</p>
+        </div>
+        <div class="arch-connector">
+          <span>consume()</span>
+        </div>
+        <div class="arch-box arch-engine">
+          <h4>FungibilityEngine</h4>
+          <span class="arch-std">Orchestrator</span>
+          <p>Vaults NFTs, deploys pools, enforces S = α · n</p>
+          <div class="arch-ops">
+            <code>funge()</code>
+            <code>defunge()</code>
+            <code>createPool()</code>
+          </div>
+        </div>
+        <div class="arch-connector">
+          <span>mint() / burn()</span>
+        </div>
+        <div class="arch-box arch-pool">
+          <h4>PoolToken</h4>
+          <span class="arch-std">ERC-20</span>
+          <p>Per-collection fungible token (EIP-1167 proxy)</p>
+        </div>
+      </div>
+      <div class="arch-note">
+        <p>No admin keys. No upgrade proxies. No governance. After initialization, the system is fully autonomous.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section" id="comparison">
+    <div class="container">
+      <h2>How We Compare</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Protocol</th>
+              <th>Mechanism</th>
+              <th>Oracle</th>
+              <th>Governance</th>
+              <th>Fungible Output</th>
+              <th>Consumable Gate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>NFTX</td>
+              <td>Vault pool</td>
+              <td>No</td>
+              <td>Vault-level</td>
+              <td>ERC-20 vToken</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Sudoswap</td>
+              <td>Bonding curve</td>
+              <td>No</td>
+              <td>Pool-level</td>
+              <td>None</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Fractional</td>
+              <td>Fractionalization</td>
+              <td>No</td>
+              <td>Reserve voting</td>
+              <td>ERC-20 fractions</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>BendDAO</td>
+              <td>Lending</td>
+              <td>Yes</td>
+              <td>Protocol-level</td>
+              <td>None</td>
+              <td>No</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Fungibilizer</strong></td>
+              <td><strong>Catalyst vault</strong></td>
+              <td><strong>No</strong></td>
+              <td><strong>None</strong></td>
+              <td><strong>ERC-20 pool token</strong></td>
+              <td><strong>Yes</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications -->
+  <section class="section section-dark" id="applications">
+    <div class="container">
+      <h2>Applications</h2>
+      <div class="grid-2">
+        <div class="app-card">
+          <h3>Instant NFT Liquidity</h3>
+          <p>Fung your NFT, sell pool tokens on any DEX. Trade uniqueness for immediate, frictionless liquidity.</p>
+        </div>
+        <div class="app-card">
+          <h3>Collection Index Exposure</h3>
+          <p>Hold fPUNK for passive CryptoPunk floor exposure — like an ETF for NFT collections.</p>
+        </div>
+        <div class="app-card">
+          <h3>DeFi Composability</h3>
+          <p>Pool tokens plug into AMMs, lending protocols, options, and yield aggregators. Standard ERC-20.</p>
+        </div>
+        <div class="app-card">
+          <h3>Game &amp; Governance Mechanic</h3>
+          <p>A consumable power: a spell that dissolves items into currency, a vote to commoditize a resource.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terminology -->
+  <section class="section" id="terminology">
+    <div class="container">
+      <h2>The Verb "To Fung"</h2>
+      <p class="section-sub">The protocol introduces "fung" as a verb. Here is the complete conjugation.</p>
+      <div class="table-wrap terms-table">
+        <table>
+          <tbody>
+            <tr><td>Infinitive</td><td><strong>to fung</strong></td></tr>
+            <tr><td>Present</td><td>fung / fungs</td></tr>
+            <tr><td>Past</td><td>funged</td></tr>
+            <tr><td>Gerund</td><td>funging</td></tr>
+            <tr><td>Agent noun</td><td>funger</td></tr>
+            <tr><td>Reverse</td><td>defung</td></tr>
+            <tr><td>Reverse past</td><td>defunged</td></tr>
+            <tr><td>Reverse gerund</td><td>defunging</td></tr>
+            <tr><td>Tool noun</td><td><strong>Fungibilizer</strong></td></tr>
+            <tr><td>State (adj.)</td><td>fungibilized</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-cta">
+    <div class="container">
+      <h2>Ready to fung?</h2>
+      <p>Read the whitepaper, explore the contracts, or run the examples locally.</p>
+      <div class="hero-actions">
+        <a href="https://github.com" class="btn btn-primary">GitHub Repo</a>
+        <a href="https://github.com" class="btn btn-secondary">Whitepaper</a>
+      </div>
+      <p class="footer-quote">"Sometimes you're the funger. Sometimes you get funged."</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>The Fungibilizer Protocol &mdash; Three contracts, two operations, one invariant.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
