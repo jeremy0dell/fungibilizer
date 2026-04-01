@@ -73,33 +73,6 @@ User → Engine.defunge(collection)
 
 **Key asymmetry:** funging requires a scarce Fungibilizer token. Defunging requires only pool tokens.
 
-## Project Structure
-
-```
-fungibilizer/
-├── contracts/
-│   ├── Fungibilizer.sol          # ERC-721 catalyst token
-│   ├── FungibilityEngine.sol     # Core orchestrator
-│   ├── PoolToken.sol             # ERC-20 pool token (clone impl)
-│   ├── interfaces/               # Contract interfaces
-│   └── mocks/
-│       └── MockNFT.sol           # Test NFT collection
-├── test/
-│   └── FungibilityEngine.test.js # Full test suite
-├── scripts/
-│   └── deploy.js                 # Deployment script
-├── examples/
-│   ├── funge.js                  # Funging example
-│   └── defunge.js                # Defunging example
-├── docs/
-│   └── whitepaper.md             # Full whitepaper
-├── website/                      # Static site (GitHub Pages / Vercel / Netlify)
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-└── hardhat.config.js
-```
-
 ## The Conservation Invariant
 
 At all times, for every collection:
@@ -109,14 +82,6 @@ S = α · n
 ```
 
 Pool token supply (`S`) equals alpha (`α`) times the number of vaulted NFTs (`n`). This is enforced by the contracts and verified in the test suite.
-
-## Website
-
-The `website/` directory contains a static site that can be hosted on GitHub Pages, Vercel, or Netlify. Just point the hosting service at the `website/` folder.
-
-## Whitepaper
-
-The full whitepaper is available at [`docs/whitepaper.md`](docs/whitepaper.md).
 
 ## License
 
