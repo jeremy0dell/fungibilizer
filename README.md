@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="docs/whitepaper.md"><strong>Read the Whitepaper &rarr;</strong></a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://website-topaz-psi-78.vercel.app">Website</a>
+  <a href="docs/whitepaper.md"><strong>Read the Whitepaper &rarr;</strong></a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://fungibilizer.vercel.app">Website</a>
 </p>
 
 <p align="center">
