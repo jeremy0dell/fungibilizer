@@ -648,6 +648,24 @@ td {
   font-size: 0.9rem;
 }
 
+/* ─── Poster ─── */
+.poster {
+  margin-bottom: 48px;
+}
+
+.poster img {
+  max-width: 360px;
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(124, 92, 252, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poster img:hover {
+  transform: rotate(-1deg) scale(1.03);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 100px rgba(124, 92, 252, 0.2);
+}
+
 /* ─── CTA ─── */
 .section-cta {
   text-align: center;
