@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <rect width="1280" height="640" fill="#0D0D1A"/>
+  <!-- Icon -->
+  <circle cx="420" cy="320" r="160" fill="#1A1A2E"/>
+  <rect x="382.5" y="232" width="75" height="75" transform="rotate(45 420 269.5)" fill="#FFFFFF"/>
+  <rect x="367" y="345" width="31" height="31" rx="2" fill="#FFFFFF"/>
+  <rect x="404.5" y="345" width="31" height="31" rx="2" fill="#FFFFFF"/>
+  <rect x="442" y="345" width="31" height="31" rx="2" fill="#FFFFFF"/>
+  <!-- Title -->
+  <text x="640" y="280" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="bold" fill="#FFFFFF" text-anchor="left">THE</text>
+  <text x="640" y="355" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="bold" fill="#FFFFFF" text-anchor="left">FUNGIBILIZER</text>
+  <!-- Tagline -->
+  <text x="640" y="410" font-family="Georgia, serif" font-size="22" fill="#888888" text-anchor="left">To fung, or not to fung — that is the question.</text>
+  <!-- Accent line -->
+  <rect x="640" y="430" width="120" height="3" rx="1.5" fill="#4A6CF7"/>
+</svg>
