@@ -2,7 +2,7 @@
 
 **A Protocol for Transmuting Non-Fungible Tokens into Fungible Units and Back Again**
 
-White Paper v2.0 — April 2026
+White Paper v1.7.38 — April 2026
 
 > *"To fung, or not to fung — that is the question."*
 >
